@@ -2616,7 +2616,10 @@ button {
 
 @media (max-width: 600px) {
   .intro-backdrop {
-    align-items: flex-start;
+      display: flex;
+  align-items: center;
+  justify-content: center;
+    /*align-items: flex-start;*/
     padding: 12px;
   }
 
