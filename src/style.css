@@ -2575,16 +2575,35 @@ button {
 }
 
 /* Modal centrado en cualquier pantalla */
-.intro-backdrop {
+/*.intro-backdrop {
   display: flex;
   align-items: center;
   justify-content: center;
+}*/
+
+/* Fondo del modal */
+.intro-backdrop {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  overflow-y: auto;
+  box-sizing: border-box;
 }
 
-.intro-modal {
+/*.intro-modal {
   margin: 0 auto;
   width: min(480px, calc(100vw - 40px));
   max-width: 100%;
+}*/
+.intro-modal {
+  width: 100%;
+  max-width: 600px;
+  max-height: calc(100dvh - 32px);
+  overflow-y: auto;
+  box-sizing: border-box;
 }
 
 .intro-robot {
@@ -2593,4 +2612,19 @@ button {
 
 .intro-hint {
   color: #94a3b8;
+}
+
+@media (max-width: 600px) {
+  .intro-backdrop {
+    align-items: flex-start;
+    padding: 12px;
+  }
+
+  .intro-modal {
+    width: 100%;
+    max-width: 100%;
+    max-height: calc(100dvh - 24px);
+    margin: auto 0;
+    overflow-y: auto;
+  }
 }
