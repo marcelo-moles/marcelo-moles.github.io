@@ -19,7 +19,6 @@ let drops = []
 const FONT = 14
 const glyphs = 'アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン0123456789ABCDEF'
 
-// Sonido de tecla: click generado con Web Audio
 let audioCtx = null
 
 function ensureAudio() {
@@ -63,7 +62,7 @@ function close() {
 
 function type() {
   lines.value = t.value.lines.map(() => '')
-  let time = 700
+  let time = 500
   t.value.lines.forEach((line, li) => {
     for (let i = 1; i <= line.length; i++) {
       timers.push(setTimeout(() => {
@@ -76,7 +75,6 @@ function type() {
   timers.push(setTimeout(close, time + 1600))
 }
 
-// Se ejecuta con el primer toque del usuario sobre el robot
 function startIntro() {
   if (started.value) return
   started.value = true
@@ -84,7 +82,6 @@ function startIntro() {
   type()
 }
 
-// Al cambiar de idioma, vuelve a escribir la consola
 function restart() {
   if (!visible.value || !started.value) return
   timers.forEach(clearTimeout)
@@ -94,7 +91,6 @@ function restart() {
 
 watch(() => state.lang, restart)
 
-// Lluvia tipo Matrix en el fondo de la consola
 function sizeRain() {
   const c = rainCanvas.value
   if (!c) return
@@ -173,18 +169,14 @@ onBeforeUnmount(() => {
               </filter>
             </defs>
 
-            <!-- Antena -->
             <line x1="100" y1="30" x2="100" y2="14" stroke="url(#robotGrad)" stroke-width="2" />
             <circle cx="100" cy="11" r="5" fill="#22d3ee" class="antenna-light" filter="url(#robotGlow)" />
 
-            <!-- Cabeza -->
             <rect x="52" y="30" width="96" height="72" rx="16" fill="rgba(7,16,28,0.9)" stroke="url(#robotGrad)" stroke-width="2" filter="url(#robotGlow)" />
 
-            <!-- Ojos -->
             <rect x="72" y="58" width="16" height="16" rx="4" fill="#22d3ee" class="eye" filter="url(#robotGlow)" />
             <rect x="112" y="58" width="16" height="16" rx="4" fill="#22d3ee" class="eye" filter="url(#robotGlow)" />
 
-            <!-- Lentes negros -->
             <line x1="52" y1="62" x2="66" y2="62" stroke="#050505" stroke-width="2.5" />
             <line x1="134" y1="62" x2="148" y2="62" stroke="#050505" stroke-width="2.5" />
             <rect x="66" y="54" width="28" height="22" rx="6" fill="#050505" stroke="rgba(255,255,255,0.4)" stroke-width="1.2" />
@@ -193,18 +185,14 @@ onBeforeUnmount(() => {
             <path d="M71 58 L77 58" stroke="rgba(255,255,255,0.35)" stroke-width="1.2" />
             <path d="M111 58 L117 58" stroke="rgba(255,255,255,0.35)" stroke-width="1.2" />
 
-            <!-- Boca: barra de voz -->
             <rect x="82" y="84" width="36" height="4" rx="2" fill="#3b82f6" class="mouth" />
 
-            <!-- Cuerpo -->
             <rect x="66" y="108" width="68" height="44" rx="10" fill="rgba(7,16,28,0.9)" stroke="url(#robotGrad)" stroke-width="1.5" />
             <circle cx="100" cy="130" r="5" fill="none" stroke="#38bdf8" stroke-width="1.5" class="core" />
 
-            <!-- Manos sobre el teclado -->
             <rect x="52" y="132" width="14" height="10" rx="4" fill="#8b5cf6" class="hand left" />
             <rect x="134" y="132" width="14" height="10" rx="4" fill="#8b5cf6" class="hand right" />
 
-            <!-- Teclado / consola -->
             <rect x="30" y="164" width="140" height="10" rx="5" fill="rgba(59,130,246,0.18)" stroke="rgba(0,174,255,0.4)" stroke-width="1" />
           </svg>
         </div>
@@ -225,8 +213,7 @@ onBeforeUnmount(() => {
           </div>
         </div>
 
-        <!--button class="btn btn-primary intro-enter" @click="close">{{ t.enter }}</button-->
-        <button class="btn btn-primary intro-enter">{{ t.enter_bien }}</button>
+        <button class="btn btn-primary intro-enter" @click="close">{{ t.enter }}</button>
 
       </div>
     </div>

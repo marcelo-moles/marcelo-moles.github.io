@@ -9,6 +9,23 @@ export const overlay = reactive({
   toast: ''
 })
 
+// Tema: 'dark' (por defecto) o 'light'. Se recuerda entre visitas.
+const savedTheme = localStorage.getItem('theme')
+export const themeState = reactive({
+  mode: savedTheme === 'light' ? 'light' : 'dark'
+})
+
+function applyTheme(mode) {
+  document.documentElement.dataset.theme = mode
+}
+applyTheme(themeState.mode)
+
+export function toggleTheme() {
+  themeState.mode = themeState.mode === 'dark' ? 'light' : 'dark'
+  localStorage.setItem('theme', themeState.mode)
+  applyTheme(themeState.mode)
+}
+
 let toastTimer = null
 export function showToast(message) {
   overlay.toast = message
