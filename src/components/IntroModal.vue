@@ -4,9 +4,11 @@ import { state, toggleLang } from '../store.js'
 import { content } from '../content.js'
 
 const visible = ref(true)
+const started = ref(false)
 const lines = ref([])
 const rainCanvas = ref(null)
 const t = computed(() => content[state.lang].intro)
+const hint = computed(() => (state.lang === 'es' ? 'toca el robot para iniciar' : 'tap the robot to start'))
 const SPEED = 38
 let timers = []
 let rafId = 0
@@ -30,7 +32,9 @@ function ensureAudio() {
 }
 
 function playKey() {
-  if (!audioCtx || audioCtx.state !== 'running') return
+  if (!audioCtx) return
+  if (audioCtx.state === 'suspended') audioCtx.resume()
+  if (audioCtx.state !== 'running') return
   const len = Math.floor(audioCtx.sampleRate * 0.03)
   const buffer = audioCtx.createBuffer(1, len, audioCtx.sampleRate)
   const data = buffer.getChannelData(0)
@@ -48,13 +52,6 @@ function playKey() {
   filter.connect(gain)
   gain.connect(audioCtx.destination)
   src.start()
-}
-
-// El navegador exige un clic o tecla del usuario para habilitar el audio
-function unlockAudio() {
-  ensureAudio()
-  window.removeEventListener('pointerdown', unlockAudio)
-  window.removeEventListener('keydown', unlockAudio)
 }
 
 function close() {
@@ -78,6 +75,24 @@ function type() {
   })
   timers.push(setTimeout(close, time + 1600))
 }
+
+// Se ejecuta con el primer toque del usuario sobre el robot
+function startIntro() {
+  if (started.value) return
+  started.value = true
+  ensureAudio()
+  type()
+}
+
+// Al cambiar de idioma, vuelve a escribir la consola
+function restart() {
+  if (!visible.value || !started.value) return
+  timers.forEach(clearTimeout)
+  timers = []
+  type()
+}
+
+watch(() => state.lang, restart)
 
 // Lluvia tipo Matrix en el fondo de la consola
 function sizeRain() {
@@ -118,19 +133,7 @@ function onKey(e) {
   if (e.key === 'Escape' || e.key === 'Enter') close()
 }
 
-function restart() {
-  if (!visible.value) return
-  timers.forEach(clearTimeout)
-  timers = []
-  type()
-}
-
-watch(() => state.lang, restart)
-
 onMounted(() => {
-  window.addEventListener('pointerdown', unlockAudio)
-  window.addEventListener('keydown', unlockAudio)
-  type()
   sizeRain()
   rafId = requestAnimationFrame(drawRain)
   window.addEventListener('keydown', onKey)
@@ -140,8 +143,6 @@ onMounted(() => {
 onBeforeUnmount(() => {
   timers.forEach(clearTimeout)
   cancelAnimationFrame(rafId)
-  window.removeEventListener('pointerdown', unlockAudio)
-  window.removeEventListener('keydown', unlockAudio)
   window.removeEventListener('keydown', onKey)
   window.removeEventListener('resize', sizeRain)
   if (audioCtx) audioCtx.close()
@@ -152,9 +153,10 @@ onBeforeUnmount(() => {
   <transition name="intro-fade">
     <div v-if="visible" class="intro-backdrop">
       <div class="intro-modal">
+
         <button class="intro-lang" @click="toggleLang">{{ state.lang === 'es' ? 'EN' : 'ES' }}</button>
 
-        <div class="intro-robot">
+        <div class="intro-robot" @click="startIntro">
           <svg viewBox="0 0 200 200" class="robot-svg" aria-hidden="true">
             <defs>
               <linearGradient id="robotGrad" x1="0" y1="0" x2="1" y2="1">
@@ -214,13 +216,17 @@ onBeforeUnmount(() => {
           </div>
           <div class="intro-body">
             <canvas ref="rainCanvas" class="intro-rain" aria-hidden="true"></canvas>
+            <p v-if="!started" class="intro-hint">
+              <span class="prompt">&gt;</span> {{ hint }}<span class="intro-caret"></span>
+            </p>
             <p v-for="(l, i) in lines" :key="i">
               <span class="prompt">&gt;</span> {{ l }}<span v-if="i === lines.length - 1" class="intro-caret"></span>
             </p>
           </div>
         </div>
 
-        <button class="btn btn-primary intro-enter" @click="close">{{ t.enter }}</button>
+        <!--button class="btn btn-primary intro-enter" @click="close">{{ t.enter }}</button-->
+        <button class="btn btn-primary intro-enter">{{ t.enter_bien }}</button>
 
       </div>
     </div>

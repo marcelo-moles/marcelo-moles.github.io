@@ -468,14 +468,15 @@ export const content = {
     ],
     footer: 'Hecho con Vue 3 y Vite.',
     intro: {
-      title: 'Portafolio.vue · Hace click sobre el ROBOT...',
+      title: '· Hace click sobre el ROBOT ·',
       lines: [
         'iniciando sistema...',
         'cargando perfil de Marcelo Molina',
         'stack: .NET · C# · Java · Python ··· REST APIs · Microservices',
         'Status ok...Bienvenido.'
       ],
-      enter: 'Entrar al portafolio'
+      enter: 'Entrar al portafolio',
+      enter_bien: 'Bienvenidos al portafolio de Marcelo Molina',
     }
   },
   en: {
@@ -940,14 +941,15 @@ export const content = {
     ],
     footer: 'Built with Vue 3 and Vite.',
     intro: {
-      title: 'Portfolio.vue · Click on the ROBOT...',
+      title: '· Click on the ROBOT ·',
       lines: [
         'booting system...',
         'loading profile: Marcelo Molina',
         'stack: .NET · C# · Java · Python ··· REST APIs · Microservices',
         'Status ok... Welcome.'
       ],
-      enter: 'Enter portfolio'
+      enter: 'Enter portfolio',
+      enter_bien: 'Welcome to Marcelo Molina’s portfolio',
     }
   }
 }

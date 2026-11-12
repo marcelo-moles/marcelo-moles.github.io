@@ -2573,3 +2573,24 @@ button {
   background: rgba(0, 174, 255, 0.12);
   border-color: rgba(0, 174, 255, 0.7);
 }
+
+/* Modal centrado en cualquier pantalla */
+.intro-backdrop {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.intro-modal {
+  margin: 0 auto;
+  width: min(480px, calc(100vw - 40px));
+  max-width: 100%;
+}
+
+.intro-robot {
+  margin: 0 auto;
+}
+
+.intro-hint {
+  color: #94a3b8;
+}
