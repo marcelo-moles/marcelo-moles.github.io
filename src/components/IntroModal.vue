@@ -213,7 +213,7 @@ onBeforeUnmount(() => {
           </div>
         </div>
 
-        <button class="btn btn-primary intro-enter" @click="close">{{ t.enter }}</button>
+        <button class="btn btn-primary intro-enter">{{ t.enter }}</button>
 
       </div>
     </div>

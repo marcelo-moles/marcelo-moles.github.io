@@ -475,8 +475,7 @@ export const content = {
         'stack: .NET · C# · Java · Python ··· REST APIs · Microservices',
         'Status ok...Bienvenido.'
       ],
-      enter: 'Entrar al portafolio',
-      enter_bien: 'Bienvenidos al portafolio de Marcelo Molina',
+      enter: 'Iniciando portafolios...'
     }
   },
   en: {
@@ -948,8 +947,7 @@ export const content = {
         'stack: .NET · C# · Java · Python ··· REST APIs · Microservices',
         'Status ok... Welcome.'
       ],
-      enter: 'Enter portfolio',
-      enter_bien: 'Welcome to Marcelo Molina’s portfolio',
+      enter: 'Starting portfolios...'
     }
   }
 }
