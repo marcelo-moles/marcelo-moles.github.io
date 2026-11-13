@@ -326,10 +326,10 @@ export const content = {
           id: 'apiprocesaarchivos',
           title: 'Api Procesa Archivos',
           description: 'API diseñada para el procesamiento de archivos de texto de gran tamaño, enfocada en rendimiento, confiabilidad y eficiencia en el procesamiento backend.',
-          status: 'Próximamente',
-          soon: true,
+          status: 'Disponible',
+          soon: false,
           tags: ['C#', '.NET', 'REST API', 'SQL Server'],
-          github: null
+          github: 'https://github.com/marcelo-moles/ApiProcesaArchivos'
         },
         {
           id: 'ai',
@@ -801,10 +801,10 @@ export const content = {
           id: 'apiprocesaarchivos',
           title: 'Api Procesa Archivos',
           description: 'API designed for processing large text files, focusing on performance, reliability and efficient backend processing.',
-          status: 'Coming soon',
-          soon: true,
+          status: 'Available',
+          soon: false,
           tags: ['C#', '.NET', 'REST API', 'SQL Server'],
-          github: null
+          github: 'https://github.com/marcelo-moles/ApiProcesaArchivos'
         },
         {
           id: 'ai',
