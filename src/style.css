@@ -2310,49 +2310,6 @@ button {
 }
 
 
-/* ==========================================================
-   Modal de presentación (robot escribiendo en consola)
-   ========================================================== */
-.intro-backdrop {
-  position: fixed;
-  inset: 0;
-  z-index: 200;
-  display: grid;
-  place-items: center;
-  padding: 20px;
-  background: rgba(3, 3, 8, 0.72);
-  backdrop-filter: blur(8px);
-}
-
-.intro-modal {
-  position: relative;
-  overflow: hidden;
-  display: grid;
-  justify-items: center;
-  gap: 18px;
-  width: min(480px, 100%);
-  padding: 30px 28px 26px;
-  background: linear-gradient(145deg, rgba(7, 16, 28, 0.97), rgba(3, 7, 18, 0.95));
-  border: 1px solid rgba(96, 165, 250, 0.2);
-  border-radius: 18px !important;
-  box-shadow: 0 0 0 1px rgba(0, 174, 255, 0.1), 0 0 40px rgba(0, 174, 255, 0.18), 0 0 90px rgba(139, 92, 246, 0.14);
-}
-
-.intro-modal::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 8px;
-  right: 8px;
-  height: 1px;
-  background: linear-gradient(90deg, rgba(0, 174, 255, 0), rgba(0, 174, 255, 0.9) 20%, rgba(139, 92, 246, 0.7) 70%, rgba(0, 174, 255, 0));
-}
-
-.intro-robot {
-  width: 150px;
-  height: 150px;
-}
-
 .robot-svg {
   width: 100%;
   height: 100%;
@@ -2389,79 +2346,18 @@ button {
   animation: type-right 0.42s ease-in-out infinite alternate;
 }
 
-.intro-console {
-  width: 100%;
-  border: 1px solid rgba(96, 165, 250, 0.14);
-  background: #05070d;
-  border-radius: 12px !important;
-  overflow: hidden;
-}
 
-.intro-bar {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 9px 12px;
-  border-bottom: 1px solid rgba(96, 165, 250, 0.1);
-  background: rgba(15, 23, 42, 0.6);
-}
 
-.intro-bar span {
-  width: 8px;
-  height: 8px;
-  border-radius: 50% !important;
-  background: rgba(96, 165, 250, 0.35);
-}
 
-.intro-bar b {
-  margin-left: 8px;
-  font-family: monospace;
-  font-size: 12px;
-  font-weight: 600;
-  color: #94a3b8;
-}
 
-.intro-body {
-  min-height: 118px;
-  padding: 14px 16px;
-  font-family: monospace;
-  font-size: 13px;
-  line-height: 1.8;
-  color: #cbd5e1;
-  text-align: left;
-}
 
-.intro-body p {
-  margin: 0;
-}
 
-.prompt {
-  color: #00aeff;
-}
 
-.intro-caret {
-  display: inline-block;
-  width: 8px;
-  height: 15px;
-  margin-left: 3px;
-  vertical-align: -2px;
-  background: #38bdf8;
-  animation: caret 1s steps(1) infinite;
-}
 
-.intro-enter {
-  margin-top: 4px;
-}
 
-.intro-fade-enter-active,
-.intro-fade-leave-active {
-  transition: opacity 0.5s ease;
-}
 
-.intro-fade-enter-from,
-.intro-fade-leave-to {
-  opacity: 0;
-}
+
+
 
 @keyframes blink {
   0%, 92%, 100% { transform: scaleY(1); }
@@ -2497,120 +2393,23 @@ button {
   51%, 100% { opacity: 0; }
 }
 
-@media (max-width: 480px) {
-  .intro-modal {
-    padding: 22px 18px 20px;
-  }
-
-  .intro-robot {
-    width: 120px;
-    height: 120px;
-  }
-}
-
-/* Consola con lluvia tipo Matrix */
-.intro-body {
-  position: relative;
-  overflow: hidden;
-  background: #05070d;
-  color: #b7ffd0;
-  text-shadow: 0 0 6px rgba(0, 255, 65, 0.45);
-}
-
-.intro-rain {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0.55;
-  pointer-events: none;
-}
-
-.intro-body p {
-  position: relative;
-  z-index: 1;
-}
-
-/* Consola: escritura de alto contraste sobre la lluvia */
-.intro-body {
-  color: #f1f5f9;
-  text-shadow: 0 0 3px #000, 0 0 8px #000;
-}
-
-.intro-body .prompt {
-  color: #38bdf8;
-  text-shadow: 0 0 3px #000, 0 0 8px #000;
-}
-
-.intro-rain {
-  opacity: 0.35;
-}
-
-/* Manito solo sobre el robot */
-.intro-robot {
-  cursor: pointer;
-}
-
-
-/* Botón de idioma dentro del modal de presentación */
-.intro-lang {
-  position: absolute;
-  top: 12px;
-  right: 14px;
-  z-index: 2;
-  padding: 4px 10px;
-  font-size: 12px;
-  font-weight: 600;
-  color: #38bdf8;
-  background: rgba(0, 174, 255, 0.045);
-  border: 1px solid rgba(0, 174, 255, 0.22);
-  border-radius: 999px;
-  cursor: pointer;
-}
-
-.intro-lang:hover {
-  color: #f8fafc;
-  background: rgba(0, 174, 255, 0.12);
-  border-color: rgba(0, 174, 255, 0.7);
-}
-
-/* Modal centrado en cualquier pantalla */
-.intro-backdrop {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 
 
 
-.intro-modal {
-  margin: 0 auto;
-  width: min(480px, calc(100vw - 40px));
-  max-width: 100%;
-}
 
-.intro-robot {
-  margin: 0 auto;
-}
 
-.intro-hint {
-  color: #94a3b8;
-}
 
-@media (max-width: 600px) {
-  .intro-backdrop {
-    align-items: flex-start;
-    padding: 12px;
-  }
 
-  .intro-modal {
-    width: 100%;
-    max-width: 100%;
-    max-height: calc(100dvh - 24px);
-    margin: auto 0;
-    overflow-y: auto;
-  }
-}
+
+
+
+
+
+
+
+
+
+
 
 /* ==========================================================
    RESPONSIVE GENERAL: tablet y celular
@@ -2793,62 +2592,6 @@ body,
   .footer-inner {
     flex-direction: column;
     gap: 6px;
-  }
-
-  /* Modal de presentación en celular */
-  .intro-backdrop {
-    position: fixed;
-    inset: 0;
-    padding: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .intro-modal {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    max-width: 420px;
-    max-height: calc(100vh - 24px);
-    max-height: calc(100dvh - 24px);
-    overflow-y: auto;
-    padding: 18px 16px 16px;
-    gap: 12px;
-  }
-
-  .intro-robot {
-    width: 110px;
-    height: 110px;
-    margin: 0 auto;
-  }
-
-  .intro-console {
-    width: 100%;
-  }
-
-  .intro-body {
-    min-height: 96px;
-    padding: 12px;
-    font-size: 12px;
-    line-height: 1.6;
-  }
-
-  .intro-body p {
-    white-space: normal;
-    overflow-wrap: anywhere;
-    word-break: break-word;
-  }
-
-  .intro-enter {
-    width: 100%;
-    justify-content: center;
-  }
-
-  .intro-lang {
-    top: 10px;
-    right: 10px;
   }
 }
 
@@ -3443,138 +3186,8 @@ html[data-theme="light"] .burger span {
   }
 }
 
-/* Modal de presentación en celular: tarjeta centrada y contenida */
-@media (max-width: 700px) {
-  .intro-backdrop {
-    position: fixed !important;
-    inset: 0 !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    padding: 12px !important;
-    background: rgba(3, 3, 8, 0.78) !important;
-    backdrop-filter: blur(8px);
-    z-index: 200;
-  }
-
-  .intro-modal {
-    position: relative !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    gap: 12px !important;
-    width: 100% !important;
-    max-width: 420px !important;
-    max-height: calc(100dvh - 24px) !important;
-    margin: 0 auto !important;
-    padding: 18px 16px 16px !important;
-    overflow-y: auto !important;
-    background: linear-gradient(145deg, rgba(7, 16, 28, 0.97), rgba(3, 7, 18, 0.95)) !important;
-    border: 1px solid rgba(96, 165, 250, 0.25) !important;
-    border-radius: 18px !important;
-    box-shadow: 0 0 40px rgba(0, 174, 255, 0.18), 0 0 90px rgba(139, 92, 246, 0.14) !important;
-  }
-
-  .intro-robot {
-    width: 110px !important;
-    height: 110px !important;
-    margin: 4px auto 0 !important;
-    cursor: pointer;
-  }
-
-  .intro-console {
-    width: 100% !important;
-  }
-
-  .intro-body {
-    min-height: 110px;
-    padding: 12px;
-    font-size: 12px;
-    line-height: 1.6;
-  }
-
-  .intro-body p {
-    white-space: normal;
-    overflow-wrap: anywhere;
-  }
-
-  .intro-enter {
-    width: 100%;
-    justify-content: center;
-  }
-
-  .intro-lang {
-    position: absolute !important;
-    top: 10px !important;
-    right: 10px !important;
-  }
-}
-
 /* Modal en celular: nunca más ancho que la pantalla, y la página no se desplaza a los costados */
 html,
 body {
   overflow-x: clip;
-}
-
-@media (max-width: 700px) {
-  .intro-backdrop {
-    width: 100vw;
-    max-width: 100vw;
-    left: 0;
-    right: 0;
-    overflow: hidden;
-  }
-
-  .intro-modal {
-    min-width: 0;
-    max-width: calc(100vw - 24px);
-    box-sizing: border-box;
-  }
-
-  .intro-bar {
-    min-width: 0;
-  }
-
-  .intro-bar b {
-    min-width: 0;
-    flex: 1 1 auto;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-
-  .intro-console,
-  .intro-body {
-    min-width: 0;
-    max-width: 100%;
-    box-sizing: border-box;
-  }
-
-  .intro-body p {
-    white-space: normal;
-    overflow-wrap: anywhere;
-  }
-}
-
-/* Modal centrado con posición fija: no se mueve aunque cambie el diseño interno */
-@media (max-width: 700px) {
-  .intro-backdrop {
-    display: block !important;
-    position: fixed !important;
-    inset: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-  }
-
-  .intro-modal {
-    position: fixed !important;
-    top: 50% !important;
-    left: 50% !important;
-    transform: translate(-50%, -50%) !important;
-    width: calc(100vw - 32px) !important;
-    max-width: 420px !important;
-    max-height: calc(100dvh - 24px) !important;
-    margin: 0 !important;
-    overflow-y: auto !important;
-  }
 }

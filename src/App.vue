@@ -13,7 +13,6 @@ import EducationSection from './components/EducationSection.vue'
 import ContactSection from './components/ContactSection.vue'
 import SiteFooter from './components/SiteFooter.vue'
 import CommandPalette from './components/CommandPalette.vue'
-import IntroModal from './components/IntroModal.vue'
 
 watchEffect(() => {
   document.documentElement.lang = state.lang
@@ -31,7 +30,6 @@ onBeforeUnmount(() => window.removeEventListener('pointermove', onMove))
 
 <template>
   <div class="spotlight" aria-hidden="true"></div>
-  <IntroModal />
   <NavBar />
   <main>
     <HeroSection />
