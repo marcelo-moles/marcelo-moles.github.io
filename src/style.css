@@ -3191,3 +3191,19 @@ html,
 body {
   overflow-x: clip;
 }
+/* Contador de visitas en el pie */
+.visits {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-size: 12px;
+}
+
+.visits b {
+  color: #38bdf8;
+  font-weight: 700;
+}
+
+html[data-theme="light"] .visits b {
+  color: #0369a1;
+}
