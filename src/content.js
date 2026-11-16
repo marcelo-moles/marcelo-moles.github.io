@@ -328,7 +328,7 @@ export const content = {
           description: 'API diseñada para el procesamiento de archivos de texto de gran tamaño, enfocada en rendimiento, confiabilidad y eficiencia en el procesamiento backend.',
           status: 'Disponible',
           soon: false,
-          tags: ['C#', '.NET', 'REST API', 'SQL Server'],
+          tags: ['C#', '.NET', 'REST API', 'SQL Server', 'Kafka'],
           github: 'https://github.com/marcelo-moles/ApiProcesaArchivos'
         },
         {
