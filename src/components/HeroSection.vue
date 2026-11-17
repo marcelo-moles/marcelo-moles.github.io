@@ -3,6 +3,7 @@ import { computed } from 'vue'
 import { state } from '../store.js'
 
 import { content, cvFiles } from '../content.js'
+import { trackCv } from '../analytics.js'
 
 import ParticleField from './ParticleField.vue'
 import TypeWriter from './TypeWriter.vue'
@@ -32,8 +33,8 @@ const x = computed(() => content[state.lang].hero)
           <a href="#experiencia" class="btn btn-primary">{{ t.ui.experience }}</a>
           <a href="#proyectos" class="btn btn-ghost">{{ x.btnProjects }}</a>
 
-          <a :href="cvFiles.es" download class="btn btn-ghost">{{ t.ui.cv }} · <Icon name="tabler-flags:argentina" :size="15" /></a>
-          <a :href="cvFiles.en" download class="btn btn-ghost">{{ t.ui.cv }} · <Icon name="tabler-flags:united-states" :size="15" /></a>
+          <a :href="cvFiles.es" download class="btn btn-ghost" @click="trackCv('es')">{{ t.ui.cv }} · <Icon name="tabler-flags:argentina" :size="15" /></a>
+          <a :href="cvFiles.en" download class="btn btn-ghost" @click="trackCv('en')">{{ t.ui.cv }} · <Icon name="tabler-flags:united-states" :size="15" /></a>
 
         </div>
       </div>

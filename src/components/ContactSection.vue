@@ -4,6 +4,7 @@ import * as SI from 'simple-icons'
 import { state, showToast } from '../store.js'
 
 import { content, cvFiles } from '../content.js'
+import { trackCv } from '../analytics.js'
 
 import Icon from './Icon.vue'
 import ContactForm from './ContactForm.vue'
@@ -47,8 +48,8 @@ function copy(item) {
         <p class="lead">{{ t.contact.text }}</p>
         <p class="availability"><span class="availability-dot"></span>{{ x.availability }}</p>
         <div class="cv-buttons">
-          <a :href="cvFiles.es" download class="btn btn-primary">PDF · Español</a>
-          <a :href="cvFiles.en" download class="btn btn-ghost">PDF · English</a>
+          <a :href="cvFiles.es" download class="btn btn-primary" @click="trackCv('es')">PDF · Español</a>
+          <a :href="cvFiles.en" download class="btn btn-ghost" @click="trackCv('en')">PDF · English</a>
         </div>
       </header>
 
